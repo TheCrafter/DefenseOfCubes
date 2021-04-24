@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] float minY = 10f;
     [SerializeField] float maxY = 80f;
 
-    private bool doMovement = true;
+    [SerializeField] bool doMovement = false;
 
     void Update()
     {

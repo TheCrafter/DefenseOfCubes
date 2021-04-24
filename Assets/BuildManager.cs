@@ -17,13 +17,15 @@ public class BuildManager : MonoBehaviour
         }
     }
 
+    public Tower StandardTowerPrefab { get { return standardTowerPrefab; } }
     [SerializeField] Tower standardTowerPrefab;
 
-    public Tower TowerToBuild { get { return towerToBuild; } }
-    private Tower towerToBuild;
+    public Tower AnotherTowerPrefab { get { return anotherTowerPrefab; } }
+    [SerializeField] Tower anotherTowerPrefab;
 
-    private void Start()
-    {
-        towerToBuild = standardTowerPrefab;
+    public Tower TowerToBuild {
+        get { return towerToBuild; }
+        set { towerToBuild = value; }
     }
+    private Tower towerToBuild;
 }
