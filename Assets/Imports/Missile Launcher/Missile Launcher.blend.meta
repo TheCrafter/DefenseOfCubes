@@ -8,22 +8,22 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Bolts
-    second: {fileID: 2100000, guid: 0a96fdc8ec8d4854ea5016fb4d37e020, type: 2}
+    second: {fileID: 2100000, guid: fc8e65ee87c6c5a40b3b66c3958043e6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Main Turret
-    second: {fileID: 2100000, guid: a14e76899ed47764d9e2e094262bb898, type: 2}
+    second: {fileID: 2100000, guid: 2d4e4f24e1e0ddb4f84f503f7bd5bfe3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Stand
-    second: {fileID: 2100000, guid: 46549518649791b4db9bcd462f54d263, type: 2}
+    second: {fileID: 2100000, guid: 2d4e4f24e1e0ddb4f84f503f7bd5bfe3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Turret Accent
-    second: {fileID: 2100000, guid: 1a0501437ee8e7c4ebced881483cc2b3, type: 2}
+    second: {fileID: 2100000, guid: fc8e65ee87c6c5a40b3b66c3958043e6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
