@@ -2,13 +2,20 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
+    [Header("Attributes")]
     [SerializeField] float range = 15f;
+    [SerializeField] float fireRate = 1f;
     [SerializeField] float updateTargetFrequency = 0.5f;
-    [SerializeField] string enemyTag = "Enemy";
-    [SerializeField] Transform partToRotate;
     [SerializeField] float turnSpeed = 10f;
 
+    [Header("Setup")]
+    [SerializeField] string enemyTag = "Enemy";
+    [SerializeField] Transform partToRotate;
+    [SerializeField] Bullet bulletPrefab;
+    [SerializeField] Transform firePoint;
+
     private Transform target;
+    private float fireCountdown = 0f;
 
     private void Start()
     {
@@ -24,6 +31,24 @@ public class Tower : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+
+        // Shooting
+        if (fireCountdown  <= 0f)
+        {
+            Shoot();
+            fireCountdown = 1f / fireRate;
+        }
+
+        fireCountdown -= Time.deltaTime;
+    }
+
+    void Shoot()
+    {
+        Bullet bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        if (bullet != null)
+        {
+            bullet.Seek(target);
+        }
     }
 
     void UpdateTarget()
