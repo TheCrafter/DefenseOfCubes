@@ -14,8 +14,8 @@ public class Shop : MonoBehaviour
         buildManager.TowerToBuild = buildManager.StandardTowerPrefab;
     }
 
-    public void PurchaseAnotherTower()
+    public void PurchaseMissileLauncher()
     {
-        buildManager.TowerToBuild = buildManager.AnotherTowerPrefab;
+        buildManager.TowerToBuild = buildManager.MissileLauncherPrefab;
     }
 }

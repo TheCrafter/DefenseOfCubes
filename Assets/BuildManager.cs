@@ -20,8 +20,8 @@ public class BuildManager : MonoBehaviour
     public Tower StandardTowerPrefab { get { return standardTowerPrefab; } }
     [SerializeField] Tower standardTowerPrefab;
 
-    public Tower AnotherTowerPrefab { get { return anotherTowerPrefab; } }
-    [SerializeField] Tower anotherTowerPrefab;
+    public Tower MissileLauncherPrefab { get { return missileLauncherPrefab; } }
+    [SerializeField] Tower missileLauncherPrefab;
 
     public Tower TowerToBuild {
         get { return towerToBuild; }

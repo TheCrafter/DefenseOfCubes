@@ -272,8 +272,12 @@ PrefabInstance:
       objectReference: {fileID: 1068268344}
     - target: {fileID: 7386999250839961844, guid: fcd9761f61c718647accfaa280d9153f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PurchaseAnotherTower
+      value: PurchaseMissileLauncher
       objectReference: {fileID: 0}
+    - target: {fileID: 7386999250839961845, guid: fcd9761f61c718647accfaa280d9153f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: be89b0073b4ba3242ba77c94852d5245, type: 3}
     - target: {fileID: 7386999250839961846, guid: fcd9761f61c718647accfaa280d9153f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -360,7 +364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7386999250839961849, guid: fcd9761f61c718647accfaa280d9153f, type: 3}
       propertyPath: m_Name
-      value: AnotherTowerItem
+      value: MissileLauncherItem
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcd9761f61c718647accfaa280d9153f, type: 3}
@@ -9620,7 +9624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standardTowerPrefab: {fileID: 7073388591317477115, guid: c9967dd0f438a3f4584de2cfd1dc76ba, type: 3}
-  anotherTowerPrefab: {fileID: 7073388591317477115, guid: 0ef41701457b3ff4a8ba2135fa94dc4d, type: 3}
+  missileLauncherPrefab: {fileID: 4539911748139757464, guid: bd8b5600b433cb345a50b3d70f66d804, type: 3}
 --- !u!1001 &1268559592
 PrefabInstance:
   m_ObjectHideFlags: 0
