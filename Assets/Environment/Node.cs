@@ -5,8 +5,11 @@ public class Node : MonoBehaviour
 {
     [SerializeField] Color hoverColor = Color.gray;
     [SerializeField] Color invalidColor = Color.red;
+    // TODO: Move to tower
+    [SerializeField] Vector3 offset = new Vector3(0f, 0.5f, 0f); // TODO: Move to tower
 
-    private Tower tower;
+    [Header("Optional")]
+    public GameObject tower;
 
     private Renderer rend;
     private Color startColor;
@@ -21,7 +24,7 @@ public class Node : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (buildManager.TowerToBuild == null) { return; }
+        if (!buildManager.CanBuild) { return; }
 
         if (tower != null)
         {
@@ -30,25 +33,25 @@ public class Node : MonoBehaviour
         else
         {
             // Build tower
-            BuildTower();
-
-            rend.material.color = invalidColor;
+            if (BuildTower())
+            {
+                rend.material.color = invalidColor;
+            }
         }
     }
 
-    // TODO: Move to tower
-    [SerializeField] Vector3 offset = new Vector3(0f, 0.5f, 0f); // TODO: Move to tower
-    void BuildTower()
+   
+    bool BuildTower()
     {
-        Tower towerToBuild = buildManager.TowerToBuild;
-        tower = Instantiate(towerToBuild, transform.position + offset, transform.rotation);
+        tower = buildManager.BuildTowerOn(this);
+        return tower != null;
     }
 
     private void OnMouseEnter()
     {
         if (EventSystem.current.IsPointerOverGameObject()) { return; }
 
-        if (buildManager.TowerToBuild == null) { return; }
+        if (!buildManager.CanBuild) { return; }
 
         rend.material.color = tower == null ? hoverColor : invalidColor;
     }
@@ -56,5 +59,10 @@ public class Node : MonoBehaviour
     private void OnMouseExit()
     {
         rend.material.color = startColor;
+    }
+
+    public Vector3 GetBuildPosition()
+    {
+        return transform.position + offset;
     }
 }

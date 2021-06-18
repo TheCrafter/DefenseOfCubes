@@ -23,9 +23,25 @@ public class BuildManager : MonoBehaviour
     public Tower MissileLauncherPrefab { get { return missileLauncherPrefab; } }
     [SerializeField] Tower missileLauncherPrefab;
 
-    public Tower TowerToBuild {
+    public TowerBlueprint TowerToBuild {
         get { return towerToBuild; }
         set { towerToBuild = value; }
     }
-    private Tower towerToBuild;
+    private TowerBlueprint towerToBuild;
+
+    public bool CanBuild { get { return towerToBuild != null; } }
+
+    public GameObject BuildTowerOn(Node node)
+    {
+        if (PlayerStats.Money < towerToBuild.cost)
+        {
+            Debug.Log("Not enough money to build that tower!");
+            return null;
+        }
+
+        PlayerStats.Money -= towerToBuild.cost;
+        Debug.Log($"Tower built! Money left: {PlayerStats.Money}.");
+
+        return Instantiate(TowerToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
+    }
 }

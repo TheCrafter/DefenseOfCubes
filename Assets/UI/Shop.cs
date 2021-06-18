@@ -2,20 +2,23 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
+    public TowerBlueprint standardTower;
+    public TowerBlueprint missileLauncher;
+
     BuildManager buildManager;
 
     private void Start()
-    {
+    { 
         buildManager = BuildManager.instance;
     }
 
-    public void PurchaseStandardTower()
+    public void SelectStandardTower()
     {
-        buildManager.TowerToBuild = buildManager.StandardTowerPrefab;
+        buildManager.TowerToBuild = standardTower;
     }
 
-    public void PurchaseMissileLauncher()
+    public void SelectMissileLauncher()
     {
-        buildManager.TowerToBuild = buildManager.MissileLauncherPrefab;
+        buildManager.TowerToBuild = missileLauncher;
     }
 }
