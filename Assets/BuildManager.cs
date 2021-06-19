@@ -5,6 +5,14 @@ public class BuildManager : MonoBehaviour
     // Singleton
     public static BuildManager instance;
 
+    public Tower StandardTowerPrefab { get { return standardTowerPrefab; } }
+    [SerializeField] Tower standardTowerPrefab;
+
+    public Tower MissileLauncherPrefab { get { return missileLauncherPrefab; } }
+    [SerializeField] Tower missileLauncherPrefab;
+
+    public GameObject buildEffect;
+
     private void Awake()
     {
         if (instance == null)
@@ -17,12 +25,6 @@ public class BuildManager : MonoBehaviour
         }
     }
 
-    public Tower StandardTowerPrefab { get { return standardTowerPrefab; } }
-    [SerializeField] Tower standardTowerPrefab;
-
-    public Tower MissileLauncherPrefab { get { return missileLauncherPrefab; } }
-    [SerializeField] Tower missileLauncherPrefab;
-
     public TowerBlueprint TowerToBuild {
         get { return towerToBuild; }
         set { towerToBuild = value; }
@@ -30,6 +32,7 @@ public class BuildManager : MonoBehaviour
     private TowerBlueprint towerToBuild;
 
     public bool CanBuild { get { return towerToBuild != null; } }
+    public bool HasMoney { get { return PlayerStats.Money >= towerToBuild.cost; } }
 
     public GameObject BuildTowerOn(Node node)
     {
@@ -41,6 +44,9 @@ public class BuildManager : MonoBehaviour
 
         PlayerStats.Money -= towerToBuild.cost;
         Debug.Log($"Tower built! Money left: {PlayerStats.Money}.");
+
+        GameObject effect = (GameObject) Instantiate(buildEffect, node.GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 5f);
 
         return Instantiate(TowerToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
     }

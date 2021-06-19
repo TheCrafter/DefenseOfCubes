@@ -53,7 +53,7 @@ public class Node : MonoBehaviour
 
         if (!buildManager.CanBuild) { return; }
 
-        rend.material.color = tower == null ? hoverColor : invalidColor;
+        rend.material.color = tower == null && buildManager.HasMoney ? hoverColor : invalidColor;
     }
 
     private void OnMouseExit()
