@@ -13,6 +13,8 @@ public class Tower : MonoBehaviour
 
     [Header("Use Laser")]
     public bool useLaser = false;
+    public int damageOverTime = 30;
+    public float slowPct = 0.5f;
     public LineRenderer lineRenderer;
     public ParticleSystem impactEffect;
     public Light impactLight;
@@ -23,6 +25,7 @@ public class Tower : MonoBehaviour
     [SerializeField] Transform firePoint;
 
     private Transform target;
+    private Enemy targetEnemy;
     private float fireCountdown = 0f;
 
     private void Start()
@@ -75,6 +78,10 @@ public class Tower : MonoBehaviour
 
     void Laser()
     {
+        // Damage over time
+        targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
+        targetEnemy.Slow(slowPct);
+
         if (!lineRenderer.enabled)
         {
             lineRenderer.enabled = true;
@@ -119,6 +126,7 @@ public class Tower : MonoBehaviour
         if (nearestEnemy != null && shortestDistance <= range)
         {
             target = nearestEnemy.transform;
+            targetEnemy = nearestEnemy.GetComponent<Enemy>();
         }
         else
         {
