@@ -54,24 +54,7 @@ public class BuildManager : MonoBehaviour
         }
     }
 
-    public GameObject BuildTowerOn(Node node)
-    {
-        if (PlayerStats.Money < towerToBuild.cost)
-        {
-            Debug.Log("Not enough money to build that tower!");
-            return null;
-        }
-
-        PlayerStats.Money -= towerToBuild.cost;
-        Debug.Log($"Tower built! Money left: {PlayerStats.Money}.");
-
-        GameObject effect = (GameObject) Instantiate(buildEffect, node.GetBuildPosition(), Quaternion.identity);
-        Destroy(effect, 5f);
-
-        return Instantiate(TowerToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
-    }
-
-    private void DeselectNode()
+    public void DeselectNode()
     {
         selectedNode = null;
         nodeUI.Hide();

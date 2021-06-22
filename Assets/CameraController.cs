@@ -10,7 +10,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] float minY = 10f;
     [SerializeField] float maxY = 80f;
 
-    [SerializeField] bool doMovement = false;
+    [SerializeField] bool doMovement = true;
+    [SerializeField] bool mouseMovement = false;
 
     void Update()
     {
@@ -30,19 +31,19 @@ public class CameraController : MonoBehaviour
 
         // Handle movement input
         Vector3 moveVector = Vector3.zero;
-        if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
+        if (Input.GetKey("w") || (mouseMovement && Input.mousePosition.y >= Screen.height - panBorderThickness))
         {
             moveVector = Vector3.forward;
         }
-        if (Input.GetKey("s") || Input.mousePosition.y <= panBorderThickness)
+        if (Input.GetKey("s") || (mouseMovement && Input.mousePosition.y <= panBorderThickness))
         {
             moveVector = Vector3.back;
         }
-        if (Input.GetKey("d") || Input.mousePosition.x >= Screen.width - panBorderThickness)
+        if (Input.GetKey("d") || (mouseMovement && Input.mousePosition.x >= Screen.width - panBorderThickness))
         {
             moveVector = Vector3.right;
         } 
-        if (Input.GetKey("a") || Input.mousePosition.x <= panBorderThickness)
+        if (Input.GetKey("a") || (mouseMovement && Input.mousePosition.x <= panBorderThickness))
         {
             moveVector = Vector3.left;
         }
@@ -56,6 +57,5 @@ public class CameraController : MonoBehaviour
         pos.y -= scroll * 1000 * scrollSpeed * Time.deltaTime;
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
         transform.position = pos;
-
     }
 }
