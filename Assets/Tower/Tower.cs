@@ -2,16 +2,22 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    [Header("Attributes")]
+    [Header("General")]
     [SerializeField] float range = 15f;
+    [SerializeField] float turnSpeed = 10f;
+
+    [Header("Use Bullets (default)")]
+    [SerializeField] Bullet bulletPrefab;
     [SerializeField] float fireRate = 1f;
     [SerializeField] float updateTargetFrequency = 0.5f;
-    [SerializeField] float turnSpeed = 10f;
+
+    [Header("Use Laser")]
+    public bool useLaser = false;
+    public LineRenderer lineRenderer;
 
     [Header("Setup")]
     [SerializeField] string enemyTag = "Enemy";
     [SerializeField] Transform partToRotate;
-    [SerializeField] Bullet bulletPrefab;
     [SerializeField] Transform firePoint;
 
     private Transform target;
@@ -24,22 +30,54 @@ public class Tower : MonoBehaviour
 
     private void Update()
     {
-        if (target == null) { return; }
+        if (target == null)
+        {
+            if (useLaser)
+            {
+                lineRenderer.enabled = false;
+            }
+
+            return; // Exit function
+        }
 
         // Target Lock-on
+        LockOnTarget();
+
+        // Shooting/Laser
+        if (useLaser)
+        {
+            Laser();
+        }
+        else
+        {
+            if (fireCountdown <= 0f)
+            {
+                Shoot();
+                fireCountdown = 1f / fireRate;
+            }
+
+            fireCountdown -= Time.deltaTime;
+        }
+        
+    }
+
+    void LockOnTarget()
+    {
         Vector3 direction = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+    }
 
-        // Shooting
-        if (fireCountdown  <= 0f)
+    void Laser()
+    {
+        if (!lineRenderer.enabled)
         {
-            Shoot();
-            fireCountdown = 1f / fireRate;
+            lineRenderer.enabled = true;
         }
 
-        fireCountdown -= Time.deltaTime;
+        lineRenderer.SetPosition(0, firePoint.position);
+        lineRenderer.SetPosition(1, target.position);
     }
 
     void Shoot()

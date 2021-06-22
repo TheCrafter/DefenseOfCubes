@@ -4,6 +4,7 @@ public class Shop : MonoBehaviour
 {
     public TowerBlueprint standardTower;
     public TowerBlueprint missileLauncher;
+    public TowerBlueprint laserBeamer;
 
     BuildManager buildManager;
 
@@ -20,5 +21,10 @@ public class Shop : MonoBehaviour
     public void SelectMissileLauncher()
     {
         buildManager.TowerToBuild = missileLauncher;
+    }
+
+    public void SelectLaserBeamer()
+    {
+        buildManager.TowerToBuild = laserBeamer;
     }
 }
