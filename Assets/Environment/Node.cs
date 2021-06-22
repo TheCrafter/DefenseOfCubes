@@ -24,19 +24,22 @@ public class Node : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!buildManager.CanBuild) { return; }
+        if (EventSystem.current.IsPointerOverGameObject()) { return; }
+
+        
 
         if (tower != null)
         {
-            Debug.Log("Cannot build there! - TODO: Display on screen."); // TODO: Remove
+            buildManager.SelectedNode = this;
+            return;
         }
-        else
+
+        if (!buildManager.CanBuild) { return; }
+
+        // Build tower
+        if (BuildTower())
         {
-            // Build tower
-            if (BuildTower())
-            {
-                rend.material.color = invalidColor;
-            }
+            rend.material.color = invalidColor;
         }
     }
 
