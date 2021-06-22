@@ -10689,16 +10689,19 @@ MonoBehaviour:
     cost: 100
     upgradedPrefab: {fileID: 9212077351172390655, guid: c628636d60111da4a9a6e54db3915bd7, type: 3}
     upgradeCost: 60
+    sellPct: 0.5
   missileLauncher:
     prefab: {fileID: 2597662601991146462, guid: bd8b5600b433cb345a50b3d70f66d804, type: 3}
     cost: 250
     upgradedPrefab: {fileID: 0}
     upgradeCost: 70
+    sellPct: 0.5
   laserBeamer:
     prefab: {fileID: 5397229973365033634, guid: 02fbe8032c9826848b64205241cd2cb5, type: 3}
     cost: 350
     upgradedPrefab: {fileID: 0}
     upgradeCost: 80
+    sellPct: 0.5
 --- !u!1 &1077917857
 GameObject:
   m_ObjectHideFlags: 0
@@ -11879,6 +11882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1386986627794535508, guid: 8323512143fff5c4eacb2d6d2829bef7, type: 3}
+  sellEffect: {fileID: 1386986627794535508, guid: 6e2a736486eac6c40aa7fc6275a44666, type: 3}
   nodeUI: {fileID: 772910883}
 --- !u!114 &1265780096
 MonoBehaviour:

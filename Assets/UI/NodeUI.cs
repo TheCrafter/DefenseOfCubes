@@ -29,6 +29,8 @@ public class NodeUI : MonoBehaviour
                 upgradeCost.text = $"${target.towerBluprint.upgradeCost}";
                 upgradeButton.interactable = true;
             }
+
+            sellCost.text = $"${target.towerBluprint.GetSellCost(target.isUpgraded)}";
         }
     }
     private Node target;
@@ -46,6 +48,7 @@ public class NodeUI : MonoBehaviour
 
     public void Sell()
     {
-
+        target.SellTower();
+        BuildManager.instance.DeselectNode();
     }
 }

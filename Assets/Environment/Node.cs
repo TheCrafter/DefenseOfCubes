@@ -83,6 +83,16 @@ public class Node : MonoBehaviour
         Debug.Log("Tower upgraded!");
     }
 
+    public void SellTower()
+    {
+        PlayerStats.Money += (int) towerBluprint.GetSellCost(isUpgraded);
+        Destroy(this.tower);
+        towerBluprint = null;
+
+        GameObject effect = (GameObject)Instantiate(buildManager.sellEffect, GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 5f);
+    }
+
     private void OnMouseEnter()
     {
         if (EventSystem.current.IsPointerOverGameObject()) { return; }
