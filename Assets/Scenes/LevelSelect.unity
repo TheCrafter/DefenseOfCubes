@@ -368,7 +368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.2627451}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -536,6 +536,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fader: {fileID: 1418981321}
+  levelButtons:
+  - {fileID: 1659324780}
+  - {fileID: 1866786752}
 --- !u!4 &453198072
 Transform:
   m_ObjectHideFlags: 0
@@ -693,7 +696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.3137255}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1061,6 +1064,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640135881}
   m_CullTransparentMesh: 1
+--- !u!114 &1659324780 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7874196523933455817, guid: 1d1324b16f59d974084c3ef864759d60, type: 3}
+  m_PrefabInstance: {fileID: 4465894805875170300}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1750260772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1194,6 +1208,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d1324b16f59d974084c3ef864759d60, type: 3}
+--- !u!114 &1866786752 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7874196523933455817, guid: 1d1324b16f59d974084c3ef864759d60, type: 3}
+  m_PrefabInstance: {fileID: 1750260772}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1966812457
 GameObject:
   m_ObjectHideFlags: 0
@@ -1377,6 +1402,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 419973520}
     m_Modifications:
+    - target: {fileID: 1657049384328363736, guid: 1d1324b16f59d974084c3ef864759d60, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3124319145825645350, guid: 1d1324b16f59d974084c3ef864759d60, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

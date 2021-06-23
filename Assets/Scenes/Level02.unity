@@ -12509,10 +12509,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1265780094}
+  - component: {fileID: 1265780097}
   - component: {fileID: 1265780093}
   - component: {fileID: 1265780095}
   - component: {fileID: 1265780096}
-  - component: {fileID: 1265780097}
   - component: {fileID: 1265780098}
   m_Layer: 0
   m_Name: GameMaster
@@ -12546,6 +12546,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 388790834}
   timeBetweenWaves: 2
   waveCountdownText: {fileID: 2049885671}
+  gameManager: {fileID: 1265780097}
 --- !u!4 &1265780094
 Transform:
   m_ObjectHideFlags: 0
@@ -12602,6 +12603,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 1263835111}
+  nextLevel: Level03
+  levelToUnlock: 3
+  sceneFader: {fileID: 8183844166508022971}
 --- !u!114 &1265780098
 MonoBehaviour:
   m_ObjectHideFlags: 0
