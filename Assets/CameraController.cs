@@ -10,7 +10,6 @@ public class CameraController : MonoBehaviour
     [SerializeField] float minY = 10f;
     [SerializeField] float maxY = 80f;
 
-    [SerializeField] bool doMovement = true;
     [SerializeField] bool mouseMovement = false;
 
     void Update()
@@ -20,14 +19,6 @@ public class CameraController : MonoBehaviour
             this.enabled = false;
             return;
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            doMovement = !doMovement;
-        }
-
-        // Disable movement
-        if (!doMovement) { return; }
 
         // Handle movement input
         Vector3 moveVector = Vector3.zero;
